@@ -110,11 +110,56 @@ For each major consolidation, write 2–3 sentences stating: which failure mode 
 
 ## STOP — Gate 2 Approval Required
 
-Present the System Consolidation Map to the user. Do not proceed until:
-1. All Pillar assignments in Part A are confirmed.
-2. All merge proposals in Part B are approved.
-3. All flags in Part D are resolved.
-4. The user explicitly approves proceeding to Directive 3.
+Render this card. Do not present a prose report.
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ GATE 2 — Architectural Blueprinting
+ Architect · Pillar map + consolidation plan
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ TL;DR
+ ─────
+ {N} files → 8 Pillars. {N} merge(s) proposed. {N} decision(s) need you.
+
+ PILLAR ASSIGNMENT MAP
+ ────────────────────
+ | Pillar | Files | King Source | Status |
+ |---|:---:|---|:---:|
+ | 🧭 Compass | {N} | {file} | {status} |
+ | ⚖️  Governance | {N} | {file} | {status} |
+ | 📖 Dictionary | {N} | {file or NONE} | {status} |
+ | 🏛️  Foundation | {N} | {file or NONE} | {status} |
+ | ⚙️  Mechanics | {N} | {file} | {status} |
+ | 📚 Library | {N} | {file} | {status} |
+ | 📐 Blueprint | {N} | {file} | {status} |
+ | 🔍 Audit | {N} | {file or NONE} | {status} |
+
+ KEY DECISIONS
+ ─────────────
+ 1. Approve Pillar assignments?
+    [Yes, approve] [No, adjust]
+
+ 2. Approve proposed merge(s)?
+    [Yes] [No] [Adjust]
+
+ 3. Missing Pillars — create now or defer as debt?
+    [Create now] [Defer]
+
+ CONFLICTS FLAGGED
+ ────────────────
+ {• One line per conflict, or "None." if clean}
+
+ ▸ Full pillar assignment table (Part A)
+ ▸ Merge rationale (Part C)
+ ▸ Conflict resolution options (Part D)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ Blueprint ready. Decisions 1–3 drive the next phase.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+The full System Consolidation Map (Parts A–D) lives inside the `▸` collapses above. Do not proceed until all decisions are resolved.
 
 See `REFERENCE_APPROVAL_GATES.md` Gate 2 for handling corrections and partial approvals.
 

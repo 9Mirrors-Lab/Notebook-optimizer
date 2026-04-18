@@ -190,16 +190,73 @@ Next Review: Triggered by addition of 3 or more new sources.
 
 ## STOP — Gate 5 Final Review
 
-Present the Final System Health Report to the user.
+Render the appropriate card based on benchmark results. Never mix the two.
 
-**If all benchmarks pass:**
-- Instruct the user to save `LLM_MANIFEST.md` as a file and upload it to the notebook as the Compass Pillar source.
-- The notebook is certified **Master Grade**. The optimization cycle is complete.
+**If all three benchmarks score 7 or above:**
 
-**If any benchmark fails:**
-- Do not issue certification.
-- Identify the specific Pillar that caused the failure and the directive to re-run.
-- Present a targeted remediation plan before any re-run begins.
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ GATE 5 — Stress Testing · RESULT: PASS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ Certified Master Grade.
+ Three benchmarks cleared. Manifest is yours.
+
+ SCORES
+ ──────
+ Grounding Density:   {X}/10 ✓
+ Synthesis Velocity:  {X}/10 ✓
+ Logic Durability:    {X}/10 ✓
+
+ INTELLIGENCE DEBTS (your roadmap)
+ ─────────────────────────────────
+ 1. {Gap}: {recommended source}
+ 2. {Gap}: {recommended source}
+ 3. {Gap}: {recommended source}
+
+ ▸ Full stress test log (Part A)
+ ▸ Rebuild summary (Part B)
+
+ NEXT STEPS
+ ──────────
+ Upload LLM_MANIFEST.md to the Compass slot in your notebook.
+ Debts are logged. Ready for next cycle.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ You have a Domain Master. 🎯
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+**If any benchmark scores below 7:**
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ GATE 5 — Stress Testing · RESULT: FAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ Certification blocked.
+ Benchmark {N} did not clear.
+
+ FAILED BENCHMARK
+ ────────────────
+ {Benchmark name}: {description}
+ Score: {X}/10 (threshold: 7)
+ Root cause: {pillar} — {failure mode}
+
+ REMEDIATION
+ ───────────
+ Re-run Directive {N} scoped to {pillar}.
+ Effort: {time estimate}.
+
+ ▸ Full stress test results (Part A)
+ ▸ Detailed root-cause analysis (Part B)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ Targeted re-run queued. Reply to start.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+The full Final System Health Report (Parts A–D) lives inside the `▸` collapses above.
 
 See `REFERENCE_APPROVAL_GATES.md` Gate 5 for post-certification maintenance protocol.
 

@@ -21,54 +21,62 @@ Execute each step in order. Do not proceed to Directive 2 until Gate 1 is cleare
 
 ## Step 1 — Confirm Platform Tier
 
-Ask the user: *"What is your current NotebookLM subscription tier — Free, Plus, Pro, or Ultra?"*
+Emit this card immediately. No preamble. No rubric preview.
 
-Record the answer. Apply the corresponding limits from the table below to all decisions in this and all subsequent directives.
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ SOURCE ARCHITECT — INITIALIZING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-| Tier | Monthly Cost | Sources per Notebook | Word Capacity (Est.) | Daily Query Limit |
-|------|:---:|:---:|:---:|:---:|
-| **Free** | $0.00 | 50 | 25,000,000 | 50 |
-| **Plus** | $14.00 | 100 | 50,000,000 | 100–500 |
-| **Pro** | $19.99 | 300 | 150,000,000 | 500 |
-| **Ultra** | $249.99 | 600 | 300,000,000 | 5,000 |
+ Two quick confirmations, then we run Directive 1.
 
-**Hard limits that apply at every tier:**
-- Per-source word cap: 500,000 words (~1 million tokens). Absolute. No exceptions.
-- Character overhead: XLSX and complex PDFs add hidden structural characters. A file showing 400,000 visible words may exceed 500,000 when overhead is counted. Flag any XLSX or complex PDF for an Apparent vs. Actual word count audit.
-- Processing window: Any file exceeding ~100 pages risks Source Blindness at its tail.
+ 1. NotebookLM tier?
+    Free · Plus · Pro · Ultra
 
-> If the user is on Free tier with more than 40 sources, or Plus tier with more than 80 sources, flag Contextual Rot as an immediate risk before proceeding.
+ 2. Corpus folder?
+    Detected: `notebookllm-pinescript/`  (12 files)
+    Confirm, or name a different folder.
+
+ Reply shorthand works: "pro, confirm"  or  "ultra, use /docs/xyz"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+On user reply, agent must:
+1. Confirm tier from the four options given.
+2. Confirm corpus folder path.
+3. Lock both for the session.
+4. Emit one-line acknowledgment: "Locked: {Tier} · corpus `{path}` ({N} files)."
+5. Proceed directly to Gate 1. No rubric preview. No caveats.
+
+**Corpus detection fallback (internal agent reasoning — not shown to user):**
+
+```
+IF `notebookllm-pinescript/` exists at repo root:
+  → propose it, show file count
+ELSE IF exactly one folder has 3+ .md files at root level:
+  → propose that folder
+ELSE:
+  → ask: "Which folder is the corpus?"
+```
+
+**Tier detail — on-demand only.** If the user asks about tier differences, render:
+
+```
+ TIER LIMITS (hard caps)
+ ───────────────────────
+ Free    50 sources · 500k words/source · 50 queries/day
+ Plus   100 sources · 500k words/source · up to 500/day
+ Pro    300 sources · 500k words/source · 500/day
+ Ultra  600 sources · 500k words/source · 5,000/day
+
+ Word cap per source is absolute at every tier.
+```
+
+Otherwise, do not recite the tier table. Apply the confirmed tier limits internally throughout this and all subsequent directives.
 
 ---
 
-## Step 2 — Internalize Retrieval Physics
-
-Before scanning any files, confirm your understanding of these retrieval rules. They govern every source engineering decision in this system.
-
-### Positional Weighting — the Engine Does Not Scan Equally
-
-| Zone | Location | Weight | What This Means |
-|------|----------|:---:|---|
-| **Zone 1** | First 200 words | 🔴 Critical | Establishes Semantic Identity. Weak Zone 1 = invisible or mis-retrieved file. |
-| **Zone 2** | H1 / H2 Headers | 🟠 Strong | Navigational beacons. Generic headers kill retrieval accuracy. |
-| Body | Middle paragraphs | 🟡 Moderate | Supported by Zone 1 and Zone 2 to be found. |
-| Tables / Code | Structured blocks | 🟡 Variable | Treat as atomic units — always enclose in Markdown. |
-| **Zone 3** | Footer / End-matter | 🔵 Weak | Never place mission-critical content here. |
-
-### Token Efficiency Formula
-
-$$E_T = \frac{T_v}{T_v + T_f}$$
-
-- $T_v$ = visible information tokens | $T_f$ = formatting and overhead tokens
-- Native Markdown maximizes $E_T$. DOCX and XLSX inflate $T_f$ — convert when encountered.
-
-### Header Gravity Rule
-
-If a header is generic (`## Section 2`, `## Data`, `## Notes`) the retrieval engine cannot use it as a beacon. Flag every generic header encountered during this directive's scan. They will be rewritten in Directive 4.
-
----
-
-## Step 3 — Run the Failure Mode Scan
+## Step 2 — Run the Failure Mode Scan
 
 Open `REFERENCE_FAILURE_MODES.md`. Work through the Quick Scan Checklist against every source currently in the notebook.
 
@@ -85,7 +93,7 @@ If no failure modes are detected in a file, record it as "Clean."
 
 ---
 
-## Step 4 — Score the Domain Master Readiness Rubric
+## Step 3 — Score the Domain Master Readiness Rubric
 
 Score the notebook on each of the five dimensions below. Use a 1–10 scale.
 
@@ -101,7 +109,7 @@ Calculate an overall score. A notebook scoring below 5 in three or more dimensio
 
 ---
 
-## Step 5 — Internalize 2026 Platform Capabilities
+## Step 4 — Internalize 2026 Platform Capabilities
 
 These capabilities are available. Use them to inform recommendations in later directives.
 
@@ -118,7 +126,7 @@ These capabilities are available. Use them to inform recommendations in later di
 
 ---
 
-## Step 6 — Produce the Gate 1 Deliverable
+## Step 5 — Produce the Gate 1 Deliverable
 
 Compile findings into the Platform Rubric Report with this structure:
 
@@ -134,10 +142,47 @@ Compile findings into the Platform Rubric Report with this structure:
 
 ## STOP — Gate 1 Approval Required
 
-Present the Platform Rubric Report to the user. Do not proceed until:
-1. The user confirms the platform tier is correct.
-2. The user acknowledges the failure modes identified.
-3. The user explicitly approves proceeding to Directive 2.
+Render this card. Do not present a prose report.
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ GATE 1 — Platform Mastery
+ System Tuner · Tier + corpus confirmed
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ SETUP CONFIRMED
+ ───────────────
+ Tier:   {Tier}  ✓
+ Corpus: {path}  ✓  ({N} files, {%} capacity)
+
+ FAILURE MODES DETECTED
+ ─────────────────────
+ ✓ / ⚠  {mode}: {status}
+ …
+
+ READINESS SCORES (5 dimensions)
+ ──────────────────────────────
+ | Dimension | Score | Status |
+ |---|:---:|---|
+ | Source Density | {X}/10 | {indicator} |
+ | Grounding | {X}/10 | {indicator} |
+ | Formatting | {X}/10 | {indicator} |
+ | Synthesis | {X}/10 | {indicator} |
+ | GEO Alignment | {X}/10 | {indicator} |
+
+ DECISION YOU OWE ME
+ ──────────────────
+ Ready to proceed to Directive 2 (Architectural Blueprinting)?
+
+ ▸ See full failure-mode scan (Section B detail)
+ ▸ See detailed readiness analysis (Section C detail)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ System ready. Architecture next.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+The full Platform Rubric Report (Sections A–D) lives inside the `▸ See full` collapses above. Do not proceed until the user approves.
 
 See `REFERENCE_APPROVAL_GATES.md` Gate 1 for edge case handling.
 

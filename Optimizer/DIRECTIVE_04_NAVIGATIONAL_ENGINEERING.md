@@ -129,11 +129,62 @@ Review all proposed Semantic Magnet rewrites against `REFERENCE_GLOSSARY.md`. Fo
 
 ## STOP — Gate 4 Approval Required
 
-Present the Navigational Engineering Report to the user. Do not apply any changes until:
-1. All eight Zone 1 Identity Blocks are reviewed and confirmed.
-2. All header rewrites are confirmed as accurately representing the section content.
-3. All Synthesis Bridges are confirmed as pointing to the correct targets.
-4. The user explicitly approves proceeding to Directive 5 and final assembly.
+Render this card.
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ GATE 4 — Navigational Engineering
+ Nav Engineer · Zone 1 + headers + bridges
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ TL;DR
+ ─────
+ Eight Zone 1 Identity Blocks written. Headers rewritten.
+ Bridges installed. All ready for your review.
+
+ IDENTITY BLOCKS SAMPLE
+ ─────────────────────
+ 🧭 Compass: "{one-line semantic identity}"
+ ⚖️  Governance: "{one-line semantic identity}"
+ 📖 Dictionary: "{one-line semantic identity}"
+ [Show 2–3 additional samples inline]
+
+ HEADER TRANSFORMATION
+ ────────────────────
+ | Old Header | New Semantic Magnet | Pillar |
+ |---|---|---|
+ | {generic} | {keyword-rich replacement} | {pillar} |
+ …
+
+ SYNTHESIS BRIDGES INSTALLED
+ ──────────────────────────
+ {N} bridges injected.
+ Sample: "{bridge text}" → {Target Pillar}
+
+ LINGUISTIC ALIGNMENT
+ ───────────────────
+ {N} drift terms standardized to canonical.
+
+ DECISIONS YOU OWE ME
+ ───────────────────
+ 1. Approve all 8 Zone 1 blocks?
+    ▸ See full blocks (Part A)
+    [Yes] [No, revise specific block(s)]
+
+ 2. Approve header rewrites?
+    ▸ See full table (Part B)
+    [Yes] [No, revise]
+
+ 3. Approve bridges + alignment?
+    ▸ See full details (Parts C & D)
+    [Yes] [No, revise]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ Navigation layer locked in. One gate left.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+The full Navigational Engineering Report (Parts A–D) lives inside the `▸` collapses above. Do not apply changes until all three decisions are approved.
 
 See `REFERENCE_APPROVAL_GATES.md` Gate 4 for handling disputes and partial approvals.
 

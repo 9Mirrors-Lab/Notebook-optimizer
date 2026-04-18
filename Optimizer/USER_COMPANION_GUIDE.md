@@ -46,6 +46,50 @@ D5 → QA Auditor:        Stress test the system and certify as Master Grade
 
 ---
 
+## Before the Gates: Handshake & Shorthand
+
+### The opening handshake
+
+When you initialize the system, the agent sends one compact card — not a lecture. It asks two questions and waits:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ SOURCE ARCHITECT — INITIALIZING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ Two quick confirmations, then we run Directive 1.
+
+ 1. NotebookLM tier?
+    Free · Plus · Pro · Ultra
+
+ 2. Corpus folder?
+    Detected: `notebookllm-pinescript/`  (12 files)
+    Confirm, or name a different folder.
+
+ Reply shorthand works: "pro, confirm"  or  "ultra, use /docs/xyz"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+Reply with your tier and corpus confirmation. The agent locks both, echoes one line ("Locked: Pro · corpus `notebookllm-pinescript/` (12 files)."), and goes straight into Gate 1. No rubric preview. No authority chain.
+
+**If the corpus folder is different from the default**, name it in your reply: `"pro, use /docs/strategy"`. The agent will scan that folder and state the file count before proceeding.
+
+### Shorthand approval
+
+Every gate presents numbered decisions. You can reply in shorthand throughout the entire workflow:
+
+| You type | Meaning |
+|---|---|
+| `approve` / `ship it` / `green light` | Approve all decisions in this gate |
+| `1y 2y 3n` | Decision 1 yes, 2 yes, 3 no |
+| `1: {choice}` | Pick the named option for decision 1 |
+| `hold` / `wait` | Pause — you want to think |
+| `expand 2` | Show deep detail for decision 2 only |
+
+The agent teaches the shorthand once in the Gate 1 footer. It won't repeat it.
+
+---
+
 ## Upload Order Matters
 
 Upload the directive files first, in sequence (D1 → D5), then the reference files. The Persistent Memory Agent consolidates every 30 minutes — files uploaded earlier shape the agent's operating persona more strongly than files uploaded later. Foundational context must be established before domain content is added.

@@ -120,11 +120,65 @@ Every Truth Triangulation decision made:
 
 ## STOP — Gate 3 Approval Required
 
-Present the Pillar Sanitization Report to the user. Do not execute any changes until:
-1. The Deleted list is reviewed and every deletion confirmed.
-2. The Corrected list is reviewed and every before/after diff confirmed or adjusted.
-3. All Adversarial Check items flagged for user decision are resolved.
-4. The user explicitly approves proceeding to Directive 4.
+Render this card. Do not present the full report before the user has scanned the summary.
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ GATE 3 — Content Sanitization
+ Technical Editor · Deletions, corrections, conflicts
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ TL;DR
+ ─────
+ {N} Pillars scrubbed. {N} deletions, {N} corrections, {N} tie(s).
+ You vote on all tie-breakers.
+
+ SANITATION SUMMARY
+ ──────────────────
+ | Pillar | Stays | Corrected | Deleted | Status |
+ |---|:---:|:---:|:---:|---|
+ | Compass | {N} | {N} | {N} | {note} |
+ | Governance | {N} | {N} | {N} | {note} |
+ | Dictionary | {N} | {N} | {N} | {note} |
+ | Foundation | {N} | {N} | {N} | {note} |
+ | Mechanics | {N} | {N} | {N} | {note} |
+ | Library | {N} | {N} | {N} | {note} |
+ | Blueprint | {N} | {N} | {N} | {note} |
+ | Audit | {N} | {N} | {N} | {note} |
+
+ DECISION 1: Approve Deletion List?
+ ──────────────────────────────────
+ {N} items flagged — top items:
+ • {item}: {reason}
+ • {item}: {reason}
+
+ [Yes, delete all] [Selective — keep some] [Hold, review first]
+
+ DECISION 2: Approve Corrections?
+ ────────────────────────────────
+ {N} before/after diffs ready.
+ ▸ See all diffs (collapsible per Pillar)
+
+ [Approve all] [Review diffs first] [Hold]
+
+ DECISION 3: King Source Tie-Breakers ({N} Pillars)
+ ───────────────────────────────────────────────────
+ {For each unresolved Pillar: comparison matrix + agent recommendation}
+
+ RISKS / FLAGS
+ ─────────────
+ {• One line per risk, or omit this section if none.}
+
+ ▸ Full Adversarial Check log (Pillar Sanitization Report — Adversarial Check Log)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ {Playful CTA if no deletions/failures dominate; clinical if deletions are sharp.}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+The full Pillar Sanitization Report lives inside the `▸` collapses above. Do not execute any changes until all three decisions are resolved.
+
+**Quick check — eyes on the deletion list before approving?** Items marked for removal are permanent. The agent flags; you confirm; you delete in the source panel.
 
 See `REFERENCE_APPROVAL_GATES.md` Gate 3 for handling user overrides and partial approvals.
 
