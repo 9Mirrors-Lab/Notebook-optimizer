@@ -1,7 +1,7 @@
 # Syncs Portfolio OS "Next Action" on the Notebook optimizer card from the
 # Notebook Optimizer Roadmap project (items in "Next Up" or "In Progress").
 #
-# Uses GITHUB_TOKEN with projects: write to update linked Projects (v2).
+# Uses GITHUB_TOKEN with repository-projects: write for Project updates (v2).
 # If the job still cannot write to your user Projects, add a PAT with full
 # project access as secret PORTFOLIO_SYNC_TOKEN and set GH_TOKEN in the step below.
 #
@@ -16,7 +16,7 @@ on:
 
 permissions:
   contents: read
-  projects: write
+  repository-projects: write
 
 jobs:
   sync:
