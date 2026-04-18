@@ -20,6 +20,24 @@ This repo includes the Chromium extension sources under **`notebookLM-extension/
 
 **Review for a future feature:** Review the **`notebookLM-extension/`** folder (for example `extension/content.js`, `extension/popup.js`, and `extension/manifest.json`) and decide what to add or change so the tool can **extract quoted passages** aligned with each citation (for example by reading popover DOM after hover or focus, or by stable hooks if Google exposes them). That would be a strong quality-of-life improvement; many users would want bulk access to those quotes. Treat this as a roadmap item; feasibility depends on NotebookLM’s live DOM and terms of use.
 
+## GitHub Project (roadmap board)
+
+The operating board **Notebook Optimizer Roadmap** is created with **[scripts/create-notebook-optimizer-roadmap-project.sh](scripts/create-notebook-optimizer-roadmap-project.sh)**. It links this repository, sets **Status** options to **Backlog**, **Next Up**, **In Progress**, and **Done**, and adds issue **#1** when it exists.
+
+One-time auth for GitHub Projects API:
+
+```bash
+gh auth refresh -s project -s read:project -h github.com
+```
+
+Then from the repo root:
+
+```bash
+./scripts/create-notebook-optimizer-roadmap-project.sh
+```
+
+Running the script twice creates a second project; use the GitHub UI to delete duplicates if needed.
+
 ## Folders
 
 | Folder | What it is |
