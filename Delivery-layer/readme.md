@@ -1,6 +1,6 @@
 # Delivery layer
 
-This folder holds **planning and reference** for updating the Agnostic Source Architect delivery layer (refinement plan, implementation quick reference, workflow map, and related notes).
+**Status: complete.** The refinement cycle described here has landed; this folder remains **planning and reference** for the Agnostic Source Architect delivery layer (refinement plan, implementation quick reference, workflow map, and related notes).
 
 Canonical directives and frozen core docs live in **`Optimizer/`** at the repo root.
 
