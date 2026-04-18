@@ -1,9 +1,11 @@
 # Syncs Portfolio OS "Next Action" on the Notebook optimizer card from the
 # Notebook Optimizer Roadmap project (items in "Next Up" or "In Progress").
 #
-# Uses GITHUB_TOKEN with repository-projects: write for Project updates (v2).
-# If the job still cannot write to your user Projects, add a PAT with full
-# project access as secret PORTFOLIO_SYNC_TOKEN and set GH_TOKEN in the step below.
+# Requires repo secret PORTFOLIO_SYNC_TOKEN:
+#   - Fine-grained PAT: under "Account permissions" set Projects to Read and write
+#     (Read only is not enough for updateProjectV2ItemFieldValue).
+#   - Classic PAT: enable scope "project" (full control of user projects).
+# GITHUB_TOKEN cannot update user-owned Projects v2 (integration not allowed).
 #
 # Run manually: Actions → Sync Portfolio OS Notebook next action → Run workflow
 
@@ -16,7 +18,6 @@ on:
 
 permissions:
   contents: read
-  repository-projects: write
 
 jobs:
   sync:
@@ -26,5 +27,11 @@ jobs:
 
       - name: Sync Next Action field
         env:
-          GH_TOKEN: ${{ github.token }}
-        run: ./scripts/sync-portfolio-notebook-next-action.sh
+          GH_TOKEN: ${{ secrets.PORTFOLIO_SYNC_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::error::Add repository secret PORTFOLIO_SYNC_TOKEN (PAT with Account → Projects → Read and write, or classic scope project)."
+            exit 1
+          fi
+          ./scripts/sync-portfolio-notebook-next-action.sh
