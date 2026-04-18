@@ -12,6 +12,10 @@ When you intentionally run **another** delivery refresh cycle (directives, compa
 
 That file lists exact paths under `Delivery-layer/` and `Optimizer/`, what to edit, and what stays frozen.
 
+## Portfolio OS
+
+**Next Action** on the Portfolio OS card for this workstream is maintained by the central **[portfolio-os-sync](https://github.com/9Mirrors-Lab/portfolio-os-sync)** repository: one PAT and one workflow there sync the **Notebook Optimizer Roadmap** project into Portfolio OS. This repo does not store `PORTFOLIO_SYNC_TOKEN` or a duplicate sync workflow.
+
 ## NotebookLM browser extension (`notebookLM-extension/`)
 
 This repo includes the Chromium extension sources under **`notebookLM-extension/`** (NotebookLM citation helper).
@@ -19,24 +23,6 @@ This repo includes the Chromium extension sources under **`notebookLM-extension/
 **Current behavior:** The extension preserves citation numbers and maps them to source names when copying from NotebookLM. It does **not** extract the **verbatim quoted text** that NotebookLM shows when you hover or open a citation; that text usually lives in overlays or the source viewer, not in the plain chat stream, so a separate code path would be required.
 
 **Review for a future feature:** Review the **`notebookLM-extension/`** folder (for example `extension/content.js`, `extension/popup.js`, and `extension/manifest.json`) and decide what to add or change so the tool can **extract quoted passages** aligned with each citation (for example by reading popover DOM after hover or focus, or by stable hooks if Google exposes them). That would be a strong quality-of-life improvement; many users would want bulk access to those quotes. Treat this as a roadmap item; feasibility depends on NotebookLM’s live DOM and terms of use.
-
-## GitHub Project (roadmap board)
-
-The operating board **Notebook Optimizer Roadmap** is created with **[scripts/create-notebook-optimizer-roadmap-project.sh](scripts/create-notebook-optimizer-roadmap-project.sh)**. It links this repository, sets **Status** options to **Backlog**, **Next Up**, **In Progress**, and **Done**, and adds issue **#1** when it exists.
-
-One-time auth for GitHub Projects API:
-
-```bash
-gh auth refresh -s project -s read:project -h github.com
-```
-
-Then from the repo root:
-
-```bash
-./scripts/create-notebook-optimizer-roadmap-project.sh
-```
-
-Running the script twice creates a second project; use the GitHub UI to delete duplicates if needed.
 
 ## Folders
 
