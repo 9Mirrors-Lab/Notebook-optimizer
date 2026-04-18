@@ -1,0 +1,32 @@
+# Syncs Portfolio OS "Next Action" on the Notebook optimizer card from the
+# Notebook Optimizer Roadmap project (items in "Next Up" or "In Progress").
+#
+# Requires repo secret PORTFOLIO_SYNC_TOKEN: a personal access token (fine-grained or classic)
+# owned by the same GitHub user as the Projects, with read/write access to Projects.
+# The default GITHUB_TOKEN cannot update user-owned Projects in most cases.
+#
+# Run manually: Actions → Sync Portfolio OS Notebook next action → Run workflow
+
+name: Sync Portfolio OS Notebook next action
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * *"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sync Next Action field
+        env:
+          GH_TOKEN: ${{ secrets.PORTFOLIO_SYNC_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "Missing secret PORTFOLIO_SYNC_TOKEN. Add a PAT with Projects scope; see workflow header comment." >&2
+            exit 1
+          fi
+          ./scripts/sync-portfolio-notebook-next-action.sh
